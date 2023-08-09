@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Network
 class HeadlinesVC: UIViewController {
     
     // MARK: - IBOutlets.
@@ -26,10 +26,28 @@ class HeadlinesVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let languageDevice {
-            getHeadLines(by: languageDevice)
-        }
         
+        let monitor = NWPathMonitor()
+        let queue = DispatchQueue(label: "NetworkMonitor")
+        monitor.pathUpdateHandler = { [weak self] path in
+            if path.status == .satisfied {
+                DispatchQueue.main.async {
+                    self?.getHeadLines(by: self?.languageDevice.orEmpty ?? "")
+                }
+            }else {
+                DispatchQueue.main.async {
+                    self?.fetchDataFromLocalStorage()
+                    self?.headLinesCView.allowsSelection = false
+                }
+            }
+        }
+        monitor.start(queue: queue)
+        
+    }
+    
+    func fetchDataFromLocalStorage(){
+        headLinesCViewItems = DataStorageManager.fetchDataLocally()
+        headLinesCView.reloadData()
     }
     
     // MARK: - Private Functions.
@@ -119,7 +137,26 @@ extension HeadlinesVC  {
     
     private func success(data: BaseModel<[ArticlesModel]>?) {
         headLinesCViewItems.append(contentsOf: data?.data ?? [])
+        DataStorageManager.saveDataLocally(headLinesCViewItems)
         headLinesCView.reloadData()
     }
 }
 
+class DataStorageManager {
+    static let userDefaultsKey = "DataKey"
+    
+    static func saveDataLocally(_ data: [ArticlesModel]) {
+        let encodedData = try? JSONEncoder().encode(data)
+        
+        UserDefaults.standard.set(encodedData, forKey: userDefaultsKey)
+    }
+    
+    static func fetchDataLocally() -> [ArticlesModel] {
+        guard let encodedData = UserDefaults.standard.data(forKey: userDefaultsKey),
+              let decodedData = try? JSONDecoder().decode([ArticlesModel].self, from: encodedData) else {
+            return []
+        }
+        
+        return decodedData
+    }
+}

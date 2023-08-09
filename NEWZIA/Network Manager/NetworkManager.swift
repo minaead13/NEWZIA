@@ -107,6 +107,4 @@ class NetworkManager {
     
 }
 
-//https://newsapi.org/v2/everything?q=apple&from=2023-08-08&to=2023-08-08&sortBy=popularity&apiKey=
 
-//ddec1df65af64afea934aff54873213c
