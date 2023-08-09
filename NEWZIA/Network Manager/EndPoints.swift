@@ -15,5 +15,6 @@ class Endpoints: NSObject {
     
     // MARK: - EndPoints.
     static var everything:String {return BASE_API_URL + "everything"}
-    static var top_headlines:String {return BASE_API_URL + "top-headlines"}
+    //static var top_headlines:String {return BASE_API_URL + "top-headlines"}
+    static var top_headlines:String {return BASE_API_URL + "everything?q=apple"}
 }

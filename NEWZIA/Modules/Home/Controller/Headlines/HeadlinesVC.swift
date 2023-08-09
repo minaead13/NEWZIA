@@ -55,13 +55,13 @@ extension HeadlinesVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let headLinesCell = collectionView.dequeue(indexPath: indexPath) as HeadlinesCViewCell
-        let loadingCell = collectionView.dequeue(indexPath: indexPath) as LoadingCViewCell
+       // let loadingCell = collectionView.dequeue(indexPath: indexPath) as LoadingCViewCell
         let item = headLinesCViewItems[indexPath.row]
         
-        if from_page < to_page && indexPath.row == headLinesCViewItems.count - 1 {
-            loadingCell.configuraCell()
-            return loadingCell
-        }
+//        if from_page < to_page && indexPath.row == headLinesCViewItems.count - 1 {
+//            loadingCell.configuraCell()
+//            return loadingCell
+//        }
         
         headLinesCell.configureCell(with: item)
         return headLinesCell
@@ -92,15 +92,15 @@ extension HeadlinesVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLay
         return CGSize(width: width, height: height)
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
-        if from_page < to_page && indexPath.row == headLinesCViewItems.count - 1 {
-            from_page += 1
-            if let languageDevice {
-                getHeadLines(by: languageDevice, page: from_page, isLoading: false)
-            }
-        }
-    }
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//
+//        if from_page < to_page && indexPath.row == headLinesCViewItems.count - 1 {
+//            from_page += 1
+//            if let languageDevice {
+//                getHeadLines(by: languageDevice, page: from_page, isLoading: false)
+//            }
+//        }
+//    }
 }
 
 // MARK: - APi.

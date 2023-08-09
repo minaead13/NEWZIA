@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -475,30 +475,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FQX-OK-anh">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="545"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zyH-PD-8PA">
+                                <rect key="frame" x="10" y="595" width="355" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Save"/>
+                                <connections>
+                                    <action selector="didTapSaveBtn:" destination="rM8-GO-Iko" eventType="touchUpInside" id="SS0-pK-Jmp"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please rate the news" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1PH-br-x6c">
+                                <rect key="frame" x="10" y="553" width="355" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ShW-pk-XDp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ShW-pk-XDp" firstAttribute="trailing" secondItem="1PH-br-x6c" secondAttribute="trailing" constant="10" id="0y1-jt-HF2"/>
                             <constraint firstItem="ShW-pk-XDp" firstAttribute="trailing" secondItem="FQX-OK-anh" secondAttribute="trailing" id="BSm-eP-0BV"/>
+                            <constraint firstItem="ShW-pk-XDp" firstAttribute="bottom" secondItem="zyH-PD-8PA" secondAttribute="bottom" constant="37" id="F8y-Nz-BVh"/>
                             <constraint firstItem="FQX-OK-anh" firstAttribute="leading" secondItem="ShW-pk-XDp" secondAttribute="leading" id="K7e-xC-ghU"/>
-                            <constraint firstItem="ShW-pk-XDp" firstAttribute="bottom" secondItem="FQX-OK-anh" secondAttribute="bottom" id="NYU-et-x1i"/>
+                            <constraint firstItem="1PH-br-x6c" firstAttribute="leading" secondItem="ShW-pk-XDp" secondAttribute="leading" constant="10" id="hFS-Xp-gbs"/>
+                            <constraint firstItem="ShW-pk-XDp" firstAttribute="trailing" secondItem="zyH-PD-8PA" secondAttribute="trailing" constant="10" id="jvZ-o9-fkL"/>
+                            <constraint firstItem="zyH-PD-8PA" firstAttribute="leading" secondItem="ShW-pk-XDp" secondAttribute="leading" constant="10" id="qnu-mt-JT2"/>
+                            <constraint firstItem="zyH-PD-8PA" firstAttribute="top" secondItem="1PH-br-x6c" secondAttribute="bottom" constant="8" id="qsy-nM-G19"/>
+                            <constraint firstItem="1PH-br-x6c" firstAttribute="top" secondItem="FQX-OK-anh" secondAttribute="bottom" constant="8" id="rnj-oS-P8A"/>
                             <constraint firstItem="FQX-OK-anh" firstAttribute="top" secondItem="ShW-pk-XDp" secondAttribute="top" id="shz-s1-V0W"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="rateField" destination="1PH-br-x6c" id="Dzn-EV-vDy"/>
                         <outlet property="webKit" destination="FQX-OK-anh" id="yOe-ef-wY8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sh0-cK-qeO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2633" y="691"/>
+            <point key="canvasLocation" x="2632.8000000000002" y="690.40479760119945"/>
         </scene>
         <!--Home-->
         <scene sceneID="GKn-TQ-98V">

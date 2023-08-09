@@ -99,11 +99,14 @@ class NetworkManager {
             "platform": "iOS",
             "Language": "en",
             "Accept": "application/json",
-            "X-Api-Key": "b17937028b54400185459ad504168458", //delete
-            "Authorization": "b17937028b54400185459ad504168458", //
+            "X-Api-Key": "ddec1df65af64afea934aff54873213c", //delete
+            "Authorization": "ddec1df65af64afea934aff54873213c", //
         ]
         return headers
     }
     
 }
 
+//https://newsapi.org/v2/everything?q=apple&from=2023-08-08&to=2023-08-08&sortBy=popularity&apiKey=
+
+//ddec1df65af64afea934aff54873213c
