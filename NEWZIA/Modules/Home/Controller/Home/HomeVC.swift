@@ -82,15 +82,15 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let articleCell = tableView.dequeueTVCell() as ArticlesTViewCell
-        let loadingCell = tableView.dequeueTVCell() as LoadingTViewCell
+       // let loadingCell = tableView.dequeueTVCell() as LoadingTViewCell
         
         let item = articlesTViewItems[indexPath.row]
         articleCell.selectionStyle = .none
         
-        if from_page < to_page && indexPath.row == articlesTViewItems.count - 1 {
-            loadingCell.configuraCell()
-            return loadingCell
-        }
+//        if from_page < to_page && indexPath.row == articlesTViewItems.count - 1 {
+//            loadingCell.configuraCell()
+//            return loadingCell
+//        }
             
         articleCell.configureCell(with: item)
         
@@ -105,16 +105,16 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        if from_page < to_page && indexPath.row == articlesTViewItems.count - 1 {
-            from_page += 1
-            if let searchText {
-                getArticles(by: searchText, page: from_page, isLoading: false)
-            }
-            
-        }
-    }
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//
+//        if from_page < to_page && indexPath.row == articlesTViewItems.count - 1 {
+//            from_page += 1
+//            if let searchText {
+//                getArticles(by: searchText, page: from_page, isLoading: false)
+//            }
+//
+//        }
+//    }
 }
 
 // MARK: - APi.
